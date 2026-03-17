@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$appPath = ".\App.jsx"
+$appPath = "src/App.jsx"
 $AppJsxContent = Get-Content -Raw $appPath
 
 $files = @{

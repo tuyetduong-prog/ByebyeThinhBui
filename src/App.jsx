@@ -185,7 +185,8 @@ const App = () => {
                         <div className="absolute -bottom-4 -right-6 w-20 h-8 bg-yellow-400/20 rotate-[-35deg] z-20"></div>
                         <div className="bg-white p-3 pb-10 shadow-xl border border-slate-200 rotate-1 w-64 md:w-72 flex flex-col items-center z-10">
                             <div className="w-full aspect-square overflow-hidden bg-slate-100 border border-slate-200 mb-4">
-                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2" alt="Trang Quỳnh" className="w-full h-full object-cover" />
+                                {/* Hãy thay ảnh 'avatar.jpg' vào thư mục 'public' của dự án, hoặc thay đổi bằng 1 link ảnh hợp lệ khác */}
+                                <img src="/avatar.jpg" alt="Trang Quỳnh" className="w-full h-full object-cover" />
                             </div>
                             <p style={{ fontFamily: "'Kalam', cursive" }} className="text-xl font-bold text-slate-700">Trang Quỳnh ❤️</p>
                         </div>
