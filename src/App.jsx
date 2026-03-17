@@ -78,7 +78,7 @@ const App = () => {
     // Tự động đăng nhập ẩn danh & Load Font
     useEffect(() => {
         const link = document.createElement('link');
-        link.href = 'https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:ital,wght@1,700;1,800&family=Caveat:wght@400;700&display=swap&subset=vietnamese';
+        link.href = 'https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:ital,wght@1,700;1,800&family=Itim&display=swap';
         link.rel = 'stylesheet';
         document.head.appendChild(link);
 
@@ -194,7 +194,7 @@ const App = () => {
                             <div className="w-full aspect-square overflow-hidden bg-slate-100 border border-slate-200 mb-3 md:mb-4">
                                 <img src="/avatar.jpg" alt="Trang Quỳnh" className="w-full h-full object-cover" />
                             </div>
-                            <p style={{ fontFamily: "'Caveat', cursive" }} className="text-base md:text-xl font-bold text-slate-700">Trang Quỳnh ❤️</p>
+                            <p style={{ fontFamily: "'Itim', cursive" }} className="text-base md:text-xl font-bold text-slate-700">Trang Quỳnh ❤️</p>
                         </div>
                     </div>
 
@@ -227,7 +227,7 @@ const App = () => {
                                     <div key={msg.id} onClick={() => setSelectedMsg(msg)} className="break-inside-avoid bg-white p-2 md:p-3 shadow-md hover:shadow-xl transition-all cursor-pointer border border-slate-100 relative group flex flex-col" style={{ transform: `rotate(${(idx % 2 === 0 ? 0.5 : -0.5)}deg)` }}>
                                         <div className={`absolute -top-2 left-1/2 -translate-x-1/2 w-8 md:w-10 h-3 ${WASHI_COLORS[msg.colorIndex || 0]} opacity-70 group-hover:opacity-100`}></div>
                                         {msg.imageUrl && <div className="w-full mb-2 md:mb-3 border border-slate-100 bg-slate-50 overflow-hidden"><img src={msg.imageUrl} className="w-full h-auto object-contain" /></div>}
-                                        <p style={{ fontFamily: "'Caveat', cursive" }} className="text-[11px] md:text-sm text-slate-800 leading-snug mb-2 md:mb-3">"{msg.content}"</p>
+                                        <p style={{ fontFamily: "'Itim', cursive" }} className="text-[12px] md:text-sm text-slate-800 leading-snug mb-2 md:mb-3">"{msg.content}"</p>
                                         <div className="flex flex-wrap gap-1 md:gap-2 mb-2 md:mb-3 pointer-events-auto" onClick={(e) => e.stopPropagation()}>
                                             {msg.videoUrl && <a href={ensureAbsoluteUrl(msg.videoUrl)} target="_blank" rel="noopener noreferrer" className="p-1 md:p-1.5 bg-red-50 text-red-600 rounded-md hover:bg-red-100 shadow-sm"><Youtube size={12} /></a>}
                                             {msg.driveUrl && <a href={ensureAbsoluteUrl(msg.driveUrl)} target="_blank" rel="noopener noreferrer" className="p-1 md:p-1.5 bg-blue-50 text-blue-600 rounded-md hover:bg-blue-100 shadow-sm"><HardDrive size={12} /></a>}
@@ -274,7 +274,7 @@ const App = () => {
                         <div className="flex-1 p-5 md:p-8 flex flex-col bg-[#fdfbf7] overflow-y-auto">
                             <div className="mb-5 md:mb-8">
                                 <div className={`w-16 h-4 ${WASHI_COLORS[selectedMsg.colorIndex || 0]} mb-4 md:mb-6 shadow-sm`}></div>
-                                <p style={{ fontFamily: "'Caveat', cursive" }} className="text-xl md:text-2xl text-slate-800 leading-relaxed italic border-l-4 border-blue-100 pl-4">"{selectedMsg.content}"</p>
+                                <p style={{ fontFamily: "'Itim', cursive" }} className="text-xl md:text-2xl text-slate-800 leading-relaxed border-l-4 border-blue-100 pl-4 whitespace-pre-line font-medium">"{selectedMsg.content}"</p>
                             </div>
                             <div className="mt-auto space-y-4 md:space-y-6 pt-4 md:pt-6 border-t border-slate-200">
                                 <div className="flex items-center gap-3 md:gap-4">
