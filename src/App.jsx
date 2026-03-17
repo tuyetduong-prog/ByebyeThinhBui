@@ -122,7 +122,16 @@ const App = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!newMsg.sender.trim() || !newMsg.content.trim() || !user || isSubmitting) return;
+        if (!newMsg.sender.trim() || !newMsg.content.trim()) {
+            alert("Vui lòng nhập đầy đủ tên và lời nhắn!");
+            return;
+        }
+        if (!user) {
+            alert("Kết nối máy chủ chưa sẵn sàng hoặc lỗi cấu hình Firebase (Vui lòng bật Anonymous Authentication trong Firebase Console).");
+            return;
+        }
+        if (isSubmitting) return;
+
         setIsSubmitting(true);
         try {
             const msgCollection = collection(db, 'messages');
@@ -133,7 +142,12 @@ const App = () => {
             });
             setIsModalOpen(false);
             setCurrentPage(0);
-        } catch (err) { console.error("Lỗi gửi:", err); } finally { setIsSubmitting(false); }
+        } catch (err) { 
+            console.error("Lỗi gửi:", err); 
+            alert("Lỗi khi gửi lời nhắn: " + err.message + "\n\n(Vui lòng kiểm tra lại Firestore Rules)");
+        } finally { 
+            setIsSubmitting(false); 
+        }
     };
 
     const totalPages = Math.ceil(messages.length / MESSAGES_PER_PAGE);
