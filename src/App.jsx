@@ -21,12 +21,13 @@ import {
 
 // --- DÁN FIREBASE CONFIG MỚI CỦA BẠN VÀO ĐÂY ---
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAMgZ_a-GnbVRz2qK8e0dJaxACmzeUbwl0",
+  authDomain: "byebyethinhbui.firebaseapp.com",
+  projectId: "byebyethinhbui",
+  storageBucket: "byebyethinhbui.firebasestorage.app",
+  messagingSenderId: "889166768561",
+  appId: "1:889166768561:web:52d984aa2e2d3acd1e3590",
+  measurementId: "G-W598S9DBW6"
 };
 
 // Khởi tạo Firebase
