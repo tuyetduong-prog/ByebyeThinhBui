@@ -79,11 +79,12 @@ const App = () => {
 
     useEffect(() => {
         const link = document.createElement('link');
-        link.href = 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap';
+        // Sử dụng font Be Vietnam Pro để hỗ trợ tiếng Việt tốt nhất cho phong cách hiện đại
+        link.href = 'https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap';
         link.rel = 'stylesheet';
         document.head.appendChild(link);
 
-        signInAnonymously(auth).catch(err => console.error("Login bias:", err));
+        signInAnonymously(auth).catch(err => console.error("Login Error:", err));
         const unsubscribe = onAuthStateChanged(auth, (u) => setUser(u));
         return () => unsubscribe();
     }, []);
@@ -146,7 +147,7 @@ const App = () => {
     const currentMessages = messages.slice(currentPage * MESSAGES_PER_PAGE, (currentPage + 1) * MESSAGES_PER_PAGE);
 
     return (
-        <div className="min-h-screen bg-[#030712] text-slate-100 p-4 md:p-8 flex items-start justify-center font-['Outfit',sans-serif] overflow-x-hidden">
+        <div className="min-h-screen bg-[#030712] text-slate-100 p-4 md:p-8 flex items-start justify-center font-['Be_Vietnam_Pro',sans-serif] overflow-x-hidden">
             {/* Background Effects */}
             <div className="fixed inset-0 pointer-events-none">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 blur-[120px] rounded-full"></div>
@@ -162,7 +163,7 @@ const App = () => {
                         <Zap size={14} /> New Journey Begins
                     </div>
                     
-                    <h1 className="text-5xl md:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-500 leading-tight">
+                    <h1 className="text-5xl md:text-8xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-300 to-purple-500 leading-tight py-2">
                         Bye Bye <br className="md:hidden" /> Thịnh Bùi
                     </h1>
                     
@@ -173,9 +174,9 @@ const App = () => {
                     <div className="flex justify-center mt-10">
                         <div className="relative group">
                             <div className="absolute inset-0 bg-blue-500 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                            <div className="relative bg-slate-900/40 backdrop-blur-xl p-2 rounded-3xl border border-white/10 p-1 flex items-center justify-center p-4">
+                            <div className="relative bg-slate-900/40 backdrop-blur-xl p-2 rounded-3xl border border-white/10 flex items-center justify-center p-4">
                                 <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden border-2 border-blue-500/30">
-                                    <img src="/avatar.jpg" alt="Thịnh Bùi" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-110" />
+                                    <img src="/avatar.jpg" alt="Thịnh Bùi" className="w-full h-full object-cover transition-all duration-700 scale-105 group-hover:scale-110" />
                                 </div>
                             </div>
                             <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-6 py-1 rounded-full text-sm font-bold shadow-lg shadow-blue-900/20 whitespace-nowrap">
@@ -247,7 +248,7 @@ const App = () => {
                 </div>
 
                 {/* Pagination */}
-                <div className="mt-16 flex items-center gap-8 mb-20 animate-fade-in">
+                <div className="mt-16 flex items-center gap-8 mb-20">
                     <button disabled={currentPage === 0} onClick={() => setCurrentPage(p => p - 1)} className="p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 disabled:opacity-20 transition-all active:scale-90">
                         <ChevronLeft size={24} />
                     </button>
@@ -308,7 +309,7 @@ const App = () => {
                                 
                                 <div className="flex flex-wrap gap-3">
                                     {selectedMsg.videoUrl && <a href={ensureAbsoluteUrl(selectedMsg.videoUrl)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-red-500/10 text-red-500 px-5 py-2.5 rounded-xl text-xs font-bold border border-red-500/20"><Youtube size={16} /> Link Video</a>}
-                                    {selectedMsg.facebookUrl && <a href={ensureAbsoluteUrl(selectedMsg.facebookUrl)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-blue-500/10 text-blue-500 px-5 py-2.5 rounded-xl text-xs font-bold border border-blue-500/20"><Facebook size={16} /> Facebook</a>}
+                                    {selectedMsg.facebookUrl && <a href={ensureAbsoluteUrl(selectedMsg.facebookUrl)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-blue-500/10 text-blue-500 px-5 py-2.5 rounded-xl text-xs font-bold border border-blue-100/20"><Facebook size={16} /> Facebook</a>}
                                 </div>
                             </div>
                         </div>
@@ -335,7 +336,7 @@ const App = () => {
                             
                             <div className="space-y-2">
                                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-1">Nội dung</label>
-                                <textarea required rows="4" value={newMsg.content} onChange={(e) => setNewMsg({ ...newMsg, content: e.target.value })} placeholder="Viết điều gì đó thật 'công nghệ'..." className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-blue-500 focus:bg-white/10 transition-all font-medium italic resize-none"></textarea>
+                                <textarea required rows="4" value={newMsg.content} onChange={(e) => setNewMsg({ ...newMsg, content: e.target.value })} placeholder="Viết điều gì đó thật Thịnh Bùi..." className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-blue-500 focus:bg-white/10 transition-all font-medium italic resize-none"></textarea>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
