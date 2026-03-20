@@ -17,7 +17,7 @@ import {
     Image as ImageIcon, Youtube, Upload, Smile, Sticker, Sun,
     Cloud, Flower2, Moon, Bird, Facebook, HardDrive,
     ChevronLeft, ChevronRight, Trophy, Gem, Palmtree, ExternalLink,
-    Zap, Cpu, Globe, Rocket
+    Zap, Cpu, Globe, Rocket, Link as LinkIcon
 } from 'lucide-react';
 
 // --- DÁN FIREBASE CONFIG MỚI CỦA BẠN VÀO ĐÂY ---
@@ -79,7 +79,6 @@ const App = () => {
 
     useEffect(() => {
         const link = document.createElement('link');
-        // Sử dụng font Be Vietnam Pro để hỗ trợ tiếng Việt tốt nhất cho phong cách hiện đại
         link.href = 'https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap';
         link.rel = 'stylesheet';
         document.head.appendChild(link);
@@ -237,7 +236,9 @@ const App = () => {
                                             <span className="text-xs font-bold text-white truncate max-w-[80px]">{msg.sender}</span>
                                         </div>
                                         <div className="flex gap-2">
-                                            {msg.videoUrl && <Youtube size={14} className="text-red-500" />}
+                                            {msg.videoUrl && (
+                                                getYoutubeEmbedUrl(msg.videoUrl) ? <Youtube size={14} className="text-red-500" /> : <LinkIcon size={14} className="text-cyan-400" />
+                                            )}
                                             {msg.facebookUrl && <Facebook size={14} className="text-blue-500" />}
                                         </div>
                                     </div>
@@ -308,7 +309,17 @@ const App = () => {
                                 </div>
                                 
                                 <div className="flex flex-wrap gap-3">
-                                    {selectedMsg.videoUrl && <a href={ensureAbsoluteUrl(selectedMsg.videoUrl)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-red-500/10 text-red-500 px-5 py-2.5 rounded-xl text-xs font-bold border border-red-500/20"><Youtube size={16} /> Link Video</a>}
+                                    {selectedMsg.videoUrl && (
+                                        getYoutubeEmbedUrl(selectedMsg.videoUrl) ? (
+                                            <a href={ensureAbsoluteUrl(selectedMsg.videoUrl)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-red-500/10 text-red-500 px-5 py-2.5 rounded-xl text-xs font-bold border border-red-500/20">
+                                                <Youtube size={16} /> Youtube Video
+                                            </a>
+                                        ) : (
+                                            <a href={ensureAbsoluteUrl(selectedMsg.videoUrl)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-cyan-500/10 text-cyan-500 px-5 py-2.5 rounded-xl text-xs font-bold border border-cyan-500/20">
+                                                <LinkIcon size={16} /> Link đính kèm
+                                            </a>
+                                        )
+                                    )}
                                     {selectedMsg.facebookUrl && <a href={ensureAbsoluteUrl(selectedMsg.facebookUrl)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-blue-500/10 text-blue-500 px-5 py-2.5 rounded-xl text-xs font-bold border border-blue-100/20"><Facebook size={16} /> Facebook</a>}
                                 </div>
                             </div>
@@ -340,7 +351,7 @@ const App = () => {
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
-                                <input value={newMsg.videoUrl} onChange={(e) => setNewMsg({ ...newMsg, videoUrl: e.target.value })} placeholder="Link Youtube" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none text-xs" />
+                                <input value={newMsg.videoUrl} onChange={(e) => setNewMsg({ ...newMsg, videoUrl: e.target.value })} placeholder="Link đính kèm (Youtube, Tiktok, Link...)" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none text-xs" />
                                 <button type="button" onClick={() => fileInputRef.current.click()} className="flex items-center justify-center gap-2 px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-blue-400 text-xs font-bold hover:bg-white/10">
                                     <Upload size={14} /> TẢI ẢNH
                                 </button>
